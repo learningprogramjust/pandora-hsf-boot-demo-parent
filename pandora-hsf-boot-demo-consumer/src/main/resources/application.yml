@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: pandora-hsf-boot-demo-consumer
+  hsf:
+    version: 1.0.0
+    group: HSF
+
+server:
+  port: 8082
