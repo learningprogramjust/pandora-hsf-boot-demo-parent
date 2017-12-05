@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:hsf="http://www.taobao.com/hsf" xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.taobao.com/hsf
+       http://www.taobao.com/hsf/hsf.xsd"
+	default-autowire="byName">
+
+	<!-- 提供一个服务示例 interface表示需要公布的服务接口，ref是具体该接口实现的服务 -->
+	<hsf:provider id="hSFBootDemoApi"
+		interface="com.aliware.edas.hsfboot.api.VersionInfoApi" ref="versionInfoApiImpl" />
+
+
+	<hsf:provider id="appApiImpl"
+		interface="com.aliware.edas.hsfboot.api.ApplicationApi" ref="applicationApiImpl" />
+
+
+</beans>

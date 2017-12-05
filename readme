@@ -1,0 +1,10 @@
+说明：测试方式，打包后，发布到EDAS平台，必须选择V3.2.2的容器版本，才能发布FatJar
+
+#分组及版本的默认指定
+在application.properties文件中配置全局分组及版本（建议默认都配置）
+spring.hsf.version=1.0.0
+spring.hsf.group=HSF
+
+启动 pandora-hsf-boot-demo-consumer 后的访问路径为：
+http://ip:端口/demo
+支持GET、POST访问 

@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.aliware.edas</groupId>
+		<artifactId>pandora-hsf-boot-demo-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>pandora-hsf-boot-demo-consumer</artifactId>
+
+	<dependencies>
+		<!-- 用户需要依赖的Api -->
+		<dependency>
+			<groupId>com.aliware.edas</groupId>
+			<artifactId>pandora-hsf-boot-demo-api</artifactId>
+		</dependency>
+		<!-- spring dependency -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!-- Alibaba Aliware 依赖 -->
+		<!-- pandora-boot启动依赖 -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-pandora</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-hsf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-sentinel</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- 该插件用于生成fat jar,并且主动排除taobao-hsf.sar这个jar包，该jar包在生产环境部署时会通过-D参数指定，所以打包时无需打包，避免资源浪费 -->
+			<plugin>
+				<groupId>com.taobao.pandora</groupId>
+				<artifactId>pandora-boot-maven-plugin</artifactId>
+				<version>2.1.6.3</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

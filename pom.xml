@@ -1,0 +1,73 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.aliware.edas</groupId>
+	<artifactId>pandora-hsf-boot-demo-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>pandora-hsf-boot-demo-api</module>
+		<module>pandora-hsf-boot-demo-provider</module>
+		<module>pandora-hsf-boot-demo-consumer</module>
+	</modules>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.4.0.RELEASE</version>
+	</parent>
+
+	<properties>
+		<spring-cloud-starter-pandora.version>1.0</spring-cloud-starter-pandora.version>
+		<spring-cloud-starter-hsf.version>1.0</spring-cloud-starter-hsf.version>
+		<spring-cloud-starter-sentinel.version>1.0</spring-cloud-starter-sentinel.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Camden.SR3</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>1.10.19</version>
+			</dependency>
+
+			<!-- 用户需要依赖的Api -->
+			<dependency>
+				<groupId>com.aliware.edas</groupId>
+				<artifactId>pandora-hsf-boot-demo-api</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<!-- Alibaba Aliware -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-pandora</artifactId>
+				<version>${spring-cloud-starter-pandora.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-hsf</artifactId>
+				<version>${spring-cloud-starter-hsf.version}</version>
+			</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-sentinel</artifactId>
+			<version>${spring-cloud-starter-sentinel.version}</version>
+		</dependency>
+
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>3.1.0</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+</project>
