@@ -1,7 +1,5 @@
 package com.aliware.edas.hsfboot.controller;
 
-import com.alibaba.boot.hsf.annotation.HSFConsumer;
-
 import com.aliware.edas.hsfboot.api.ApplicationApi;
 import com.aliware.edas.hsfboot.api.UsersApi;
 import com.aliware.edas.hsfboot.api.VersionInfoApi;
@@ -15,35 +13,41 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("demo")
 public class DemoController {
 
-	@HSFConsumer(serviceGroup="HSF",clientTimeout=3000,serviceVersion="1.0.0")
-	private VersionInfoApi<?> versionInfoApi;
+    @Autowired
+    private VersionInfoApi<?> versionInfoApi;
 
-	@Autowired
-	private ApplicationApi applicationApi;
-	
-	@HSFConsumer(serviceGroup="HSF",serviceVersion="1.0.0")
-	private UsersApi usersApi;
+    @Autowired
+    private ApplicationApi applicationApi;
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String testVersion() {
-		int v = versionInfoApi.countVersionInfo();
-		return "version:" + v;
-	}
+    @Autowired
+    private UsersApi usersApi;
 
-	@RequestMapping(value="user",method = RequestMethod.GET)
-	public String testName() {
-		return usersApi.getNameByUserId(10);
-	}
-	
-	@RequestMapping(method = RequestMethod.POST)
-	public String testApp() {
-		String appName = applicationApi.getApplicationName();
-		return appName;
-	}
+    @RequestMapping(method = RequestMethod.GET)
+    public String testVersion() {
+        int v = versionInfoApi.countVersionInfo();
+        return "version:" + v;
+    }
 
-	@GetMapping("/version")
-	public String getVersionInfo(){
-		return versionInfoApi.getVersionInfo();
-	}
+    /**
+     * annotation
+     * @return
+     */
+    @GetMapping("user")
+    public String testName() {
+        return usersApi.getNameByUserId(10);
+    }
+
+    @GetMapping("app")
+    public String getApplicationName() {
+        String appName = applicationApi.getApplicationName();
+        return appName;
+    }
+
+    @GetMapping("version")
+    public String getVersionInfo() {
+        String version = versionInfoApi.getVersionInfo();
+        System.out.println("version from consumer:" + version);
+        return version;
+    }
 
 }

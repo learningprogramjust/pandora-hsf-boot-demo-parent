@@ -7,13 +7,11 @@
        http://www.taobao.com/hsf/hsf.xsd"
 	default-autowire="byName">
 
-	<!--&lt;!&ndash; 提供一个服务示例 interface表示需要公布的服务接口，ref是具体该接口实现的服务 &ndash;&gt;-->
-	<!--<hsf:provider id="hSFBootDemoApi"-->
-		<!--interface="com.aliware.edas.hsfboot.api.VersionInfoApi" ref="versionInfoApiImpl" />-->
-
+	<!-- 提供一个服务示例 interface表示需要公布的服务接口，ref是具体该接口实现的服务 -->
+	<hsf:provider id="hSFBootDemoApi"
+		interface="com.aliware.edas.hsfboot.api.VersionInfoApi" ref="versionInfoApiImpl" />
 
 	<hsf:provider id="appApiImpl"
 		interface="com.aliware.edas.hsfboot.api.ApplicationApi" ref="applicationApiImpl" />
-
 
 </beans>
