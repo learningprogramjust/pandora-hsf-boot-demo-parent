@@ -6,6 +6,7 @@ import com.aliware.edas.hsfboot.api.ApplicationApi;
 import com.aliware.edas.hsfboot.api.UsersApi;
 import com.aliware.edas.hsfboot.api.VersionInfoApi;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("demo")
 public class DemoController {
 
-	@Autowired
+	@HSFConsumer(serviceGroup="HSF",clientTimeout=3000,serviceVersion="1.0.0")
 	private VersionInfoApi<?> versionInfoApi;
 
 	@Autowired
@@ -38,6 +39,11 @@ public class DemoController {
 	public String testApp() {
 		String appName = applicationApi.getApplicationName();
 		return appName;
+	}
+
+	@GetMapping("/version")
+	public String getVersionInfo(){
+		return versionInfoApi.getVersionInfo();
 	}
 
 }

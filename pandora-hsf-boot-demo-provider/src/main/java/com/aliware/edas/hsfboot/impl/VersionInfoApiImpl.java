@@ -1,10 +1,11 @@
 package com.aliware.edas.hsfboot.impl;
 
+import com.alibaba.boot.hsf.annotation.HSFProvider;
 import com.aliware.edas.hsfboot.api.VersionInfoApi;
 import com.aliware.edas.hsfboot.domain.VersionInfo;
 import org.springframework.stereotype.Service;
 
-@Service("versionInfoApiImpl")
+@HSFProvider(serviceInterface = VersionInfoApi.class,serviceGroup="HSF",clientTimeout=3000,serviceVersion="1.0.0")
 public class VersionInfoApiImpl implements VersionInfoApi<VersionInfo> {
 
 	@Override
